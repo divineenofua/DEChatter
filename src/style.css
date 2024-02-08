@@ -1,0 +1,196 @@
+* {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --white: white;
+  --pink: #ea526f;
+  --box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+  --black: black;
+  --lightDark: rgb(29, 26, 26);
+  --lighterDark: rgb(49, 46, 46);
+  --gray: rgb(213, 208, 208);
+}
+
+/*styling for Login And coverPage*/
+.view {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 10%;
+}
+
+.login-form {
+  margin: 0px 120px;
+}
+
+.login-form h1 {
+  color: var(--black);
+  font-size: 28px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+label {
+  display: block;
+  padding-bottom: 15px;
+  color: var(--lightDark);
+  font-size: 17px;
+  transition: 0.4s;
+  font-weight: 500;
+}
+
+input[type='email'],
+input[type='password'],
+input[type='text'] {
+  appearance: none;
+  border: var(--gray) 1px solid;
+  outline: none;
+  background: none;
+
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-bottom: 25px;
+
+  color: #333;
+  font-size: 14px;
+
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+  background-color: transparent;
+
+  transition: 0.4s;
+}
+input::placeholder {
+  color: var(--lighterDark);
+  transition: 0.4s;
+}
+
+input[type='submit'], button[type='button']  {
+  appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #ea526f;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+}
+button[type='button'] {
+  background-color: white;
+  color: var(--black);
+  border: var(--gray) 1px solid;
+  text-align: center;
+  margin-top: 15px;
+
+}
+button[type='button'] a{
+  text-decoration: none;
+  color: var(--black);
+  font-weight: 100;
+}
+input[type='submit']:hover {
+  cursor: pointer;
+}
+
+.cover-page {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(assets/unsplash_9pjBx5uVBlg.png);
+  background-size: cover;
+  width: 100vw;
+  min-height: 100vh;
+  object-fit: contain;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+}
+.cover-page .cover-content {
+  color: var(--white);
+  padding: 0 30px;
+}
+.cover-content h1 {
+  color: var(--white);
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.login-container {
+  display: flex;
+}
+/* .login-container .cover-item{
+	flex-basis: 1;
+} */
+.login {
+  flex-grow: 1;
+}
+.cover {
+  width: 50vw;
+}
+.navBar {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.navBar nav {
+  display: flex;
+  justify-content: center;
+}
+.navBar nav a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--black);
+  font-weight: 600;
+}
+/* .navBar nav a{
+  padding-left: 70px;
+ } */
+
+.navBar nav .nav-item .next {
+  padding-left: 120px;
+}
+.navBar nav .nav-item .prev {
+  padding-right: 120px;
+}
+
+.navBar nav .nav-item div {
+  background-color: var(--gray);
+  height: 5px;
+  margin-top: 10px;
+}
+.navBar nav .nav-item .log {
+  background-color: var(--pink);
+}
+/* End of Login and Cover Page Stying */
+
+/* Signup page Stying */
+.name-tag {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#select-option {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-bottom: 25px;
+  border: var(--gray) 1px solid;
+  color: #333;
+  font-size: 14px;
+  }
+.linkedin{
+  color: rgb(49, 49, 156);
+ }
+/* End of Signup page Stying */
