@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import LoginPage from '../components/LoginPage.vue';
-// import ChatPage from '../components/ChatPage.vue';
+import SignPage from '../components/SignPage.vue';
 
 const routes = [
     {
@@ -8,11 +8,11 @@ const routes = [
         name: 'LoginPage',
         component:LoginPage
     },
-    // {
-    //     path: '/chatpage',
-    //     name: 'ChatPage',
-    //     component: ChatPage
-    // }
+    {
+        path: '/SignPage',
+        name: 'SignPage',
+        component: SignPage
+    }
 ]
 const router = createRouter({
     history:createWebHistory(),

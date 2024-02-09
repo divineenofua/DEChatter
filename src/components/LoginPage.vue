@@ -2,13 +2,7 @@
   <div class="login-container">
     <CoverPage class="cover" />
     <div class="view login">
-      <div class="navBar">
-        <nav>
-          <div class="nav-item"><a class="prev"  href="#">Register</a>
-        <div></div></div>
-          <div class="nav-item"><a class="next" href="#">Log In</a><div class="log"></div></div>
-        </nav>
-      </div>
+      <NavPage />
       <form id="form" class="login-form" @submit.prevent="onSubmit">
         <h1>Welcome Back</h1>
         <div>
@@ -27,6 +21,7 @@
 
 <script setup>
 import CoverPage from './CoverPage.vue'
+import NavPage from './NavPage.vue';
 import { useToast } from 'vue-toastification'
 import { ref } from 'vue'
 

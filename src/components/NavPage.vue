@@ -1,8 +1,21 @@
-<template>
-    <div class="navBar"> 
+ <template>
+  <div class="navBar">
     <nav>
-        <a href="http://">Register</a>
-        <a href="http://">Login</a>
+      <RouterLink :to="{ name:'SignPage' }" 
+       active-class="active"
+        ><div class="nav-item">
+          <span class="prev "  >Register</span>
+          <div class="log"  ></div></div
+      ></RouterLink>
+      <RouterLink  :to="{ name:'LoginPage'}"  active-class="active">
+        <div class="nav-item">
+          <span class="next "  >Log In</span>
+          <div  class="log" ></div>
+        </div>
+      </RouterLink>
     </nav>
-</div>
+  </div>
 </template>
+<script setup>
+ 
+ </script>
