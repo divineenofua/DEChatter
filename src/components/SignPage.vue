@@ -1,5 +1,5 @@
 <template>
-  <div class="login-container">
+  <div class="container">
     <CoverPage class="cover" />
     <div class="view login">
       <NavPage />
@@ -11,7 +11,7 @@
             <input type="text" v-model="user.firstName" placeholder="first name" />
           </div>
           <div>
-            <label for="last-name"> Email Address</label>
+            <label for="last-name"> Last Name</label>
             <input type="text" v-model="user.lastName" placeholder="last name" />
           </div>
         </div>
@@ -63,9 +63,15 @@ import NavPage from './NavPage.vue'
 import { useToast } from 'vue-toastification'
 import { reactive } from 'vue'
 import { useAuthStore } from '../stores/AuthStore'
+import { useRouter } from 'vue-router'
+import {onUnmounted} from 'vue'
+import {sendOtp}  from '../stores/Otp'
+
+ const router = useRouter();
+  
 
 const authStore = useAuthStore();
-//const error = authStore.state;
+const otpVal = Math.floor(1000 + Math.random() * 9000);
 const user = reactive({
   email: '',
   firstName: '',
@@ -93,23 +99,34 @@ const validateInput = () => {
   } else {
 
 
-    authStore.registerUser(user)
-      .then(() => {
-        console.log('Registration successful');
-        authStore.state.error = ''; // Clear error message on successful registration
-        // Optionally, you can redirect the user or perform other actions here
+    authStore.registerUser(user).then(() => {
+       
+        toast.success('Congratulations! You have been registered.');
+        authStore.state.error = ''; 
+        sendOtp(user, otpVal)
+        setTimeout(() => {
+          router.push({ name: 'ConfirmPage', params: {otpVal}});
+        },3000)
+        
       })
       .catch((error) => {
         console.error('Registration failed:', error);
-        toast.error(authStore.state.error ); // Display error message
+        toast.error(authStore.state.error.slice(9) ); // Display error message
       });
-    // authStore.registerUser(user)
-    //   console.log('please',error);
-       
-    //     toast.error(error.error.slice(9));
-    //     console.log('na somwe see am');
+
+
+
+    
       
      
   }
 }
+onUnmounted(() => {
+   toast.clear();
+});
 </script>
+// authStore.registerUser(user)
+//   console.log('please',error);
+   
+//     toast.error(error.error.slice(9));
+//     console.log('na somwe see am');

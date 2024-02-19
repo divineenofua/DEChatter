@@ -4,11 +4,11 @@ import { createApp } from 'vue'
 import Toast from 'vue-toastification'
 import 'vue-toastification/dist/index.css'
 import { OhVueIcon, addIcons } from 'oh-vue-icons'
-import { BiLinkedin, FcGoogle} from 'oh-vue-icons/icons'
+import { BiLinkedin, BiPeopleFill,  CoChartLine, CoNewspaper, FcGoogle} from 'oh-vue-icons/icons'
 import App from './App.vue'
 import router from './router';
 import {createPinia} from 'pinia'
- addIcons(BiLinkedin, FcGoogle);
+ addIcons(BiLinkedin, FcGoogle, CoChartLine, BiPeopleFill, CoNewspaper);
 
  const pinia = createPinia();
  const app =createApp(App);

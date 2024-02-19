@@ -2,13 +2,16 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
+ 
+ overflow-x: hidden;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+ 
 :root {
   --white: white;
+  --purp:#543ee0;
   --pink: #ea526f;
   --box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
   --black: black;
@@ -16,7 +19,7 @@
   --lighterDark: rgb(49, 46, 46);
   --gray: rgb(213, 208, 208);
 }
-
+ 
 /*styling for Login And coverPage*/
 .view {
   min-height: 100vh;
@@ -73,7 +76,8 @@ input::placeholder {
   transition: 0.4s;
 }
 
-input[type='submit'], button[type='button']  {
+input[type='submit'],
+button[type='button'] {
   appearance: none;
   border: none;
   outline: none;
@@ -81,7 +85,7 @@ input[type='submit'], button[type='button']  {
   display: block;
   width: 100%;
   padding: 10px 15px;
-  background-color: #ea526f;
+  background-color: var(--purp);
   border-radius: 5px;
   color: #fff;
   font-size: 18px;
@@ -93,9 +97,8 @@ button[type='button'] {
   border: var(--gray) 1px solid;
   text-align: center;
   margin-top: 15px;
-
 }
-button[type='button'] a{
+button[type='button'] a {
   text-decoration: none;
   color: var(--black);
   font-weight: 100;
@@ -128,7 +131,7 @@ input[type='submit']:hover {
   text-align: center;
   margin-bottom: 30px;
 }
-.login-container {
+.container {
   display: flex;
 }
 /* .login-container .cover-item{
@@ -171,7 +174,7 @@ input[type='submit']:hover {
   margin-top: 10px;
 }
 .active .nav-item .log {
-  background-color: var(--pink);
+  background-color: var(--purp);
 }
 /* End of Login and Cover Page Stying */
 
@@ -189,8 +192,370 @@ input[type='submit']:hover {
   border: var(--gray) 1px solid;
   color: #333;
   font-size: 14px;
-  }
-.linkedin{
+}
+.linkedin {
   color: rgb(49, 49, 156);
- }
+}
 /* End of Signup page Stying */
+
+/*ConfirmPage page Stying */
+
+.confirm-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 50%;
+}
+.confirm-container .content {
+  display: flex;
+}
+.confirm-container .content .input-item {
+  padding: 0 10px;
+  margin: 0 10px;
+  width: 70px;
+  height: 70px;
+  border: 1px solid var(--gray);
+  border-radius: 4px;
+}
+.confirm-container .content input {
+  width: 70px;
+  height: 70px;
+
+  outline: none;
+  border: none;
+  background: none;
+  appearance: none;
+}
+.confirm-container input[type='submit']{
+  width: 50%;
+  margin-top: 25px;
+}
+.confirm-container h1{
+  padding-bottom: 20px;
+}
+.confirm-container span{
+  padding-bottom: 20px;
+}
+/* End of ConfirmPage page Stying */
+/*  HomePage Stying */
+  .nav-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 50px;
+    
+  }
+  .nav-content{
+    display: flex;
+  }
+  .nav-header ul{
+    display: flex;
+
+  }
+  .nav-header ul li{
+    text-decoration: none;
+    list-style: none ;
+    padding-left: 20px;
+   }
+ 
+  .nav-header ul li a{
+    text-decoration: none;
+  color: var(--black);
+  transition: all 1s ease;
+}
+
+  .nav-header ul li a:hover{
+    color: var(--purp);
+    font-size: 23px;
+    cursor: pointer;
+  }
+  .logo{
+  font-weight: 700;
+  color: var(--purp);
+  font-size: 30px;
+}
+.btns button, .btn-item{
+  appearance: none;
+  background-color: var(--white);
+  padding: 10px 25px;
+  border-radius: 5px;
+  border: 1px solid var(--purp);
+  font-weight: 400;
+  transition: all 2s ease;
+}
+.btns .btn-diff{
+  background-color: var(--purp);
+  color: var(--white);
+  margin-left: 20px;
+ 
+}
+.btns .btn-diff:hover{
+  background-color: var(--white);
+  color: var(--black);
+  cursor: pointer;
+}
+.btns button:hover{
+  background-color: var(--purp);
+  color: var(--white);
+  font-size: 20px;
+  cursor: pointer;
+}
+.home-header{
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  url(assets/jeshoots-com--2vD8lIhdnw-unsplash.jpg);
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+.home-header .header-items{
+  width: 53%;
+color: var(--white);
+ 
+}
+.home-header .header-items h1{
+  padding-bottom: 25px;
+  line-height: 50px;
+  font-size:  2.5rem;
+}
+.header-items p{
+  font-size: 20px;
+}
+.btn-item{
+  background-color: var(--purp);
+  color: var(--white);
+  transition: all 2s ease;
+  font-size: 20px;
+  margin-top:18px;
+  border:  none;
+}
+
+.btn-item:hover{
+  background-color: var(--white);
+  color: var(--black);
+  font-size: 23px;
+  cursor: pointer;
+}
+
+/* about styling */
+.about{
+  margin:70px;
+}
+.about-container{
+  display: flex;
+  justify-content: space-between;
+  align-items:start;
+}
+.about-container .about-text{
+width: 50%;
+ 
+}
+.about-container .about-text h3{
+font-size: 2.5rem;
+padding-bottom: 30px;
+}
+.about-container .about-text p{
+  line-height: 1.5rem;
+}
+
+.about-container .about-image img{
+  width: 500px;
+  height: 400px;
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 10px;
+}
+/* know more styling */
+.know-more{
+  margin: 70px 150px;
+}
+/* .know-container{
+  
+} */
+.know-container h3{
+  text-align: center;
+  font-size: 2.5rem;
+   
+}
+.know-container p{
+  line-height: 1.5rem;
+  padding: 40px  0 30px 0;
+}
+
+.know-container .know-contents{
+display: flex;
+gap: 40px;
+}
+.know-container .know-contents .know-items{
+  border: 1px solid var(--gray);
+  text-align: left;
+  padding: 20px;
+  padding-bottom: 0;
+  width: 35%;
+  border-radius: 10px;
+}
+.know-contents .know-items p{
+ padding-top: 15px;
+ color: rgb(133, 133, 133);
+}
+.know-contents .know-items span{
+  font-weight: 600;
+  font-size: 20px;
+}
+.know-contents .know-items .logo{
+  background-color: rgb(236, 236, 247);
+  border-radius: 50%;
+   height: 50px;
+   width: 50px;
+   text-align: center;
+   padding: 10px 0;
+   overflow: hidden;
+   margin-bottom: 20px;
+}
+/*join chatter styling*/
+.join-chatter{
+  background-color:#ffedcc ;
+}
+.join-content{
+ display: flex;
+ padding: 50px 90px;
+ gap: 50px;
+ align-items: center;
+}
+.join-content .image {
+  
+ min-width: 50%;
+}
+.join-content .text{
+  max-width: 50%;
+}
+ 
+.join-content .image img{
+ width: 200px;
+ height: 200px;
+ object-fit: cover;
+ object-position: center;
+ border-radius: 50%;
+  
+}
+.join-content .text blockquote{
+  padding-bottom: 40px;
+}
+.join-content .text span{
+font-weight: 700;
+font-size: 22px;
+}
+
+.join-content .text small{
+  font-weight: 100;
+  font-size: 16px;
+  }
+
+.join-content button{
+  display: block;
+}
+.image-item{
+ 
+  object-fit: cover;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+
+}
+.team{
+  margin: 70px 170px;
+
+}
+.team-image{
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  flex: 70%;
+}
+.mage{
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.team-content{
+  display: flex;
+  align-items: flex-start;
+}
+.team-content .team-text h3{
+  font-size: 2.7rem;
+}
+.team-content .team-text p{
+  padding: 30px 0;
+  line-height: 30px;
+}
+.contact-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.contact{
+  background-color: #ffedcc;
+  padding: 70px 140px;
+}
+.contact-content .items h3{
+  padding-bottom: 15px;
+}
+.contact-content .items ul li{
+  padding-bottom: 15px;
+}
+.contact-content .items ul li a{
+  text-decoration: none;
+  color: var(--lightDark);
+}
+.contact-content .items ul li a:hover{
+  color: var(--purp);
+}
+ /* styling sidebar */
+
+ .sidebar{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 200px;
+  z-index: 100;
+  background-color:  var(--lighterDark);
+  padding: 70px 30px;
+ }
+ 
+ .sidebar ul li a{
+  color: var(--white);
+  text-decoration: none;
+  transition: all 1.5s ease;
+ }
+ .sidebar ul li a:hover{
+  font-size: 24px;
+  color: var(--purp);
+ }
+ .sidebar ul li {
+  padding-bottom: 70px;
+ }
+ .sidebar .side-btn{
+  color: var(--white);
+  text-decoration: none;
+ 
+  
+ }
+
+ .side-btn div{
+  padding-bottom: 70px;
+  transition: all 1.5s ease;
+ }
+ .sidebar  .side-btn div:hover{
+  font-size: 24px;
+  color: var(--purp);
+ }
+
+/* End of HomePage  Stying */
+ 

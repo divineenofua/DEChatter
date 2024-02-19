@@ -1,5 +1,5 @@
 <template>
-  <div class="login-container">
+  <div class="container">
     <CoverPage class="cover" />
     <div class="view login">
       <NavPage />
