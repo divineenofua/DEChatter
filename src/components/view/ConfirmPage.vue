@@ -16,13 +16,22 @@
 </template>
 
 <script setup>
-import CoverPage from './CoverPage.vue'
+import CoverPage from '../CoverPage.vue'
 import { useToast } from 'vue-toastification'
 import { ref } from 'vue';
 import { defineProps } from 'vue';
+// import router from '@/router';
+import { useRouter } from 'vue-router'
+const router = useRouter();
+
+
 const props = defineProps({
   otpVal:{
     type: String,
+    required:true
+  }, 
+  user:{
+    type: Object,
     required:true
   }
 });
@@ -39,10 +48,12 @@ const moveToNextInput = (index) => {
 }
 
 const confirm = () => {
-  console.log(keys.value)
   const enteredCode = keys.value.join('');
   if (enteredCode === props.otpVal){
     toast.success('Code confirmed');
+    setTimeout(() => {
+      router.push({ name: 'HomePage'});
+ },300)
   } else {
     toast.error('Incorrect code. Please try again.');
   }
@@ -52,33 +63,7 @@ const confirm = () => {
 
 
 
-// const key1 = ref();
-// const key2 = ref();
-// const key3 = ref();
-// const key4 = ref();
-// const joinArr = ref();
  
-// //push keys 
-//   const pushKeys = () =>{
-//     arrKey.value.push(key1.value,key2.value,key3.value,key4.value);
-//     console.log(arrKey.value);
-//     joinArr.value = parseInt(arrKey.value.join(''));
-//      if (joinArr.value === props.otpVal){
-//       toast.success('Code confirmed');
-//      }
-      
-//   }
-
-// const confirm = () => {
-//   console.log(props.otpVal)
- 
-//   if(key1.value || key2.value || key3.value || key4.value){
-//      pushKeys();
-//    }else{
-//     toast.error('Input confirm code');
-
-//   }
-// }
 </script>
 
 

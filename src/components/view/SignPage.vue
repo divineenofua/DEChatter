@@ -1,12 +1,12 @@
 <template>
   <div class="container">
     <CoverPage class="cover" />
-    <div class="view login">
+    <div class="view login  ">
       <NavPage />
-      <form id="form" class="login-form" @submit.prevent="validateInput">
+      <form id="form" class="login-form sign" @submit.prevent="validateInput">
         <h1>Register as a Writer/Reader</h1>
         <div class="name-tag">
-          <div>
+          <div >
             <label for="First-name">First Name</label>
             <input type="text" v-model="user.firstName" placeholder="first name" />
           </div>
@@ -18,7 +18,7 @@
 
         <div>
           <label for="select"> You are Joining as?</label>
-          <select name="select" v-model="user.select" id="select-option">
+          <select name="select" title="select"  v-model="user.select" id="select-option">
             <option value="Writer">Writer</option>
             <option value="Reader">Reader</option>
           </select>
@@ -42,7 +42,7 @@
         </div>
         <input type="submit" value="Create Account" />
 
-        <button type="button">
+        <button type="button" @click.prevent="signInWithGoggle">
           <v-icon name="fc-google" scale="1.7" animation="pulse" hover />
           <a href="#">Sign Up With Goggle</a>
         </button>
@@ -58,14 +58,14 @@
 </template>
 
 <script setup>
-import CoverPage from './CoverPage.vue'
-import NavPage from './NavPage.vue'
+import CoverPage from '../CoverPage.vue'
+import NavPage from '../NavPage.vue'
 import { useToast } from 'vue-toastification'
 import { reactive } from 'vue'
-import { useAuthStore } from '../stores/AuthStore'
+import { useAuthStore } from '/Users/Divine/fireChat/src/stores/AuthStore'
 import { useRouter } from 'vue-router'
 import {onUnmounted} from 'vue'
-import {sendOtp}  from '../stores/Otp'
+import {sendOtp}  from '/Users/Divine/fireChat/src/stores/Otp'
 
  const router = useRouter();
   
@@ -105,13 +105,12 @@ const validateInput = () => {
         authStore.state.error = ''; 
         sendOtp(user, otpVal)
         setTimeout(() => {
-          router.push({ name: 'ConfirmPage', params: {otpVal}});
+          router.push({ name: 'ConfirmPage', params: {otpVal}  });
         },3000)
         
       })
-      .catch((error) => {
-        console.error('Registration failed:', error);
-        toast.error(authStore.state.error.slice(9) ); // Display error message
+      .catch(( ) => {
+         toast.error(authStore.state.error.slice(9) ); // Display error message
       });
 
 
@@ -121,6 +120,20 @@ const validateInput = () => {
      
   }
 }
+//Firebase: Error (auth/popup-blocked).
+const signInWithGoggle =() => {
+  authStore.logInWithGoggle().then(() => {
+  toast.success('Sign in with goggle successful')
+  setTimeout(() => {
+      router.push({ name: 'HomePage'});
+ },300)
+ }) .catch((error) => {
+        console.error('Registration failed:', error);
+        toast.error(authStore.state.error3 ); // Display error message
+      });
+  
+}
+
 onUnmounted(() => {
    toast.clear();
 });
@@ -130,3 +143,5 @@ onUnmounted(() => {
    
 //     toast.error(error.error.slice(9));
 //     console.log('na somwe see am');
+
+ 

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="navit"> 
     <div class="nav-header">
       <div class="logo">CHATTER</div>
        
@@ -11,19 +12,21 @@
           <li><a href="#Blog">Blog</a></li>
         </ul>
       </nav>
+      <v-icon @click="showMenu" class="menu-bar" name="px-menu" scale="1.8" />
       <div class="btns">
+      
         <RouterLink :to="{name:'LoginPage'}"><button>Log In</button></RouterLink>
         <RouterLink :to="{name:'SignPage'}"><button class="btn-diff">Sign Up</button></RouterLink>
          
          
       </div>
-    
+    </div>
     </div>
 
 
-    <div class="sidebar"> 
+    <div class="sidebar" v-bind:class="{active: isActive}"> 
       <nav>
-        <v-icon />
+        <v-icon @click="closeMenu" class="close-bar" name="fa-times" scale="1.8" />
         <ul>
           <li><a href="#Home">Home</a></li>
           <li><a href="#About-us">About Us</a></li>
@@ -45,7 +48,7 @@
 
 
 
-    <div class="home-header">
+    <div id="Home" class="home-header">
       <div class="header-items">
         <h1>Welcome to Chatter: A Haven for Text-Based Content</h1>
         <p>Unleash the Power of Words, Connect with Like-minded Readers and Writers</p>
@@ -68,8 +71,7 @@
         </div>
         <div class="about-image">
           <img
-            src="../assets/christina-wocintechchat-com-c5pRBXFhJgo-unsplash.jpg"
-            alt="chatter team members"
+          src="/src/assets/christina-wocintechchat-com-c5pRBXFhJgo-unsplash.jpg"            alt="chatter team members"
           />
         </div>
       </div>
@@ -109,7 +111,7 @@
     <div class="join-chatter">
         <div class="join-content">
             <div class="image">
-                <img src="../assets/stefan-stefancik-QXevDflbl8A-unsplash.jpg" alt=" A Woman">
+                <img src="/src/assets/stefan-stefancik-QXevDflbl8A-unsplash.jpg" alt=" A Woman">
             </div>
             <div class="text">
                 <blockquote>"Chatter has become an integral part of my online experience. As a user of this incredible blogging platform, I have discovered a vibrant community of individuals who are passionate about sharing their ideas and engaging in thoughtful discussions.”
@@ -124,10 +126,10 @@
         <div class="team-content">
             <div class="team-image">
                 <div class="mage">
-                    <img  class="image-item" src="../assets/stefan-stefancik-QXevDflbl8A-unsplash.jpg" alt="">
-                    <img class="image-item" src="../assets/prince-akachi-J1OScm_uHUQ-unsplash.jpg" alt="">
+                    <img  class="image-item" src="/src/assets/stefan-stefancik-QXevDflbl8A-unsplash.jpg" alt="">
+                    <img class="image-item" src="/src/assets/prince-akachi-J1OScm_uHUQ-unsplash.jpg" alt="">
                 </div>
-               <div><img class="image-item" src="../assets/jassir-jonis-QWa0TIUW638-unsplash.jpg" alt=""></div>  
+               <div><img class="image-item" src="/src/assets/jassir-jonis-QWa0TIUW638-unsplash.jpg" alt=""></div>  
 
             </div>
             <div class="team-text">
@@ -179,6 +181,15 @@
 
 
  
-<script>
+<script setup>
+import { ref } from 'vue'
+const isActive = ref();
+const showMenu = () => {
+   isActive.value = true;
+}
+const closeMenu = () => {
+   isActive.value = false;
+}
+
 //const { RouterLink } = require('vue-router');
 </script>

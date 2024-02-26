@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
-import LoginPage from '../components/LoginPage.vue';
-import SignPage from '../components/SignPage.vue';
-import ConfirmPage from '../components/ConfirmPage.vue';
-import HomePage from '../components/HomePage.vue';
+import LoginPage from '../components/view/LoginPage.vue';
+import SignPage from '../components/view/SignPage.vue';
+import ConfirmPage from '../components/view/ConfirmPage.vue';
+import HomePage from '../components/view/HomePage.vue';
+import SideNav from '../components/SideNav.vue';
 
 const routes = [
     {
@@ -25,6 +26,11 @@ const routes = [
         path: '/',
         name: 'HomePage',
         component: HomePage
+    },
+    {
+        path: '/SideNav',
+        name: 'SideNav',
+        component: SideNav
     }
 ]
 const router = createRouter({
