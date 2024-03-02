@@ -4,6 +4,10 @@ import SignPage from '../components/view/SignPage.vue';
 import ConfirmPage from '../components/view/ConfirmPage.vue';
 import HomePage from '../components/view/HomePage.vue';
 import SideNav from '../components/SideNav.vue';
+import SearchBar from '../components/SearchBar.vue';
+import FeedPage from '../components/view/FeedPage.vue';
+import PostAnalyticsPage from '../components/view/PostAnalyticsPage.vue';
+
 
 const routes = [
     {
@@ -23,7 +27,7 @@ const routes = [
         props:true
     } ,
     {
-        path: '/',
+        path: '/HomePage',
         name: 'HomePage',
         component: HomePage
     },
@@ -31,6 +35,19 @@ const routes = [
         path: '/SideNav',
         name: 'SideNav',
         component: SideNav
+    },
+    {
+        path: '/FeedPage',
+        name: 'FeedPage',
+        component: FeedPage
+    }, {
+        path: '/SearchBar',
+        name: 'SearchBar',
+        component: SearchBar
+    }, {
+        path: '/',
+        name: 'postAnalytics',
+        component: PostAnalyticsPage
     }
 ]
 const router = createRouter({

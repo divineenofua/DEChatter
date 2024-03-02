@@ -6,8 +6,10 @@
         <h5>Overview</h5>
         <div class="sub-items  icon">
             <div class="item">
+                <RouterLink :to="{ name:'FeedPage' }"> 
                 <v-icon name="bi-crop" />
                 <span>Feed</span>
+            </RouterLink>
             </div>
             <div class="item">
                 <v-icon name="bi-bookmark" />
