@@ -62,10 +62,10 @@ import CoverPage from '../CoverPage.vue'
 import NavPage from '../NavPage.vue'
 import { useToast } from 'vue-toastification'
 import { reactive } from 'vue'
-import { useAuthStore } from '/Users/Divine/fireChat/src/stores/AuthStore'
+import { useAuthStore } from '../../stores/AuthStore'
 import { useRouter } from 'vue-router'
 import {onUnmounted} from 'vue'
-import {sendOtp}  from '/Users/Divine/fireChat/src/stores/Otp'
+import {sendOtp}  from '../../stores/Otp'
 
  const router = useRouter();
   

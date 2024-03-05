@@ -3,14 +3,14 @@
       <SearchBar    class="search-bar" />
       <SideNav  class="side-nav" />
 
-      <div class="feed-container">
+      <div class="feed-container analy">
         <h2>Posts Analytics</h2>
         <div class="date">
            <span>  {{ blogDate   }},  <small>25 Days Ago</small></span>
         </div>
-        <h2>Post Highlights</h2>
-        <div>
-          <h2>Top post Earned  </h2><small>20678 impressions</small>
+        <h3 class="analy-title">Post Highlights</h3>
+        <div class="analy-info">
+          <h2>Top posts    </h2><small> earned 20678 impressions</small>
         </div>
         <div class="blog-item"   > 
         <div class="top-header2">
@@ -40,6 +40,35 @@
                 <small>750</small>
                 </div>
 
+              </div>
+              <div class="btn">
+                <button>View Post Activity</button>
+              </div>
+              <div class="post-sum">
+                <span>{{ blogDate   }} summary</span>
+              </div>
+              <div class="analy-flex">
+                <div class="items">
+                  <div class="item">
+                    <span>Posts</span>
+                    <span>3</span>
+                  </div>
+                  <div class="item">
+                    <span>Profile Visits</span>
+                    <span>300</span>
+                  </div>
+                </div>
+
+                <div class="items">
+                  <div class="item">
+                    <span>Post Impressions</span>
+                    <span>2.98k Views</span>
+                  </div>
+                  <div class="item">
+                    <span>Followers</span>
+                    <span>550</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

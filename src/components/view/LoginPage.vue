@@ -24,7 +24,7 @@ import CoverPage from '../CoverPage.vue'
 import NavPage from '../NavPage.vue';
 import { useToast } from 'vue-toastification'
 import { reactive } from 'vue'
- import { useAuthStore } from '/Users/Divine/fireChat/src/stores/AuthStore'
+ import { useAuthStore } from '../../stores/AuthStore'
  import { useRouter } from 'vue-router'
 
 const router = useRouter();

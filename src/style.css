@@ -303,13 +303,25 @@ input[type='submit']:hover {
   font-weight: 400;
   transition: all 2s ease;
 }
-.btns .btn-diff{
+.btns .btn-diff  {
   background-color: var(--purp);
   color: var(--white);
   margin-left: 20px;
  
 }
-.btns .btn-diff:hover{
+
+.btn button{
+  appearance: none;
+  border: 1px solid var(--purp);
+   padding: 10px 25px;
+  border-radius: 5px;
+   font-weight: 400;
+  transition: all 2s ease-in-out;
+  background-color: var(--purp);
+  color: var(--white);
+  
+}
+.btns .btn-diff:hover, .btn button:hover{
   background-color: var(--white);
   color: var(--black);
   cursor: pointer;
@@ -819,8 +831,81 @@ gap: 20px;  padding-bottom: 20px;
 /* feed page styling ends */
 
 
+/* POST ANALYTICS STYLING BEGINS */
 
+.feed-container .date{
+  padding-top: 25px;
 
+}
+.feed-container .date{
+  padding-bottom: 20px;
+  border-bottom:2px solid var(--purp);
+
+}
+.feed-container .date span{
+  font-weight: 700;
+  color: var(--lightDark);
+  font-size: 17px;
+  
+ }
+.feed-container .date span small{
+  font-size: 14px;
+  font-weight: 100;
+}
+.feed-container .analy-title{
+  padding-top: 10px;
+  padding-bottom: 25px;
+}
+.feed-container .analy-info{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+   
+}
+.feed-container .analy-info small{
+  font-size: 15px;
+}
+.analy .blog-item .top-header2{
+padding: 30px 0;
+}
+.analy .btm  .title{
+  font-size: 26px;
+}
+.analy .descrip, .analy .interact-btn{
+   width:70% ;
+ }
+ .analy .btn{
+  padding: 10px 0;
+  }
+ .analy .post-sum span{ 
+  color: var(--dirtyBlack);
+  font-size: 16px;
+  }
+  .analy .post-sum {
+    margin: 17px 0;
+    padding-bottom: 10px;
+    border-bottom:2px solid var(--purp);
+  }
+  .analy .analy-flex{
+    display: flex;
+    gap: 15px;
+  }
+  .analy .analy-flex .items .item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    gap: 10px;
+  }
+  .analy .analy-flex .items .item span{
+    color: var(--black);
+  }
+  .analy .analy-flex .items .item span:first-of-type{
+    color: var(--dirtyBlack);
+    font-size: 19px;
+    font-weight: 700;
+  }
+/* POST ANALYTICS STYLING ENDS */
 
 
 
