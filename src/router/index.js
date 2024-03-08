@@ -37,7 +37,7 @@ const routes = [
         component: SideNav
     },
     {
-        path: '/FeedPage',
+        path: '/',
         name: 'FeedPage',
         component: FeedPage
     }, {
@@ -45,7 +45,7 @@ const routes = [
         name: 'SearchBar',
         component: SearchBar
     }, {
-        path: '/',
+        path: '/postAnalytics',
         name: 'postAnalytics',
         component: PostAnalyticsPage
     }

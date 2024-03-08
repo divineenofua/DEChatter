@@ -12,7 +12,7 @@
           <h5>Overview</h5>
           <div class="sub-items icon">
             <div class="item">
-              <RouterLink :to="{ name: 'FeedPage' }">
+              <RouterLink class="navigate"  :to="{ name: 'FeedPage' }" active-class="router">
                 <v-icon name="bi-crop" />
                 <span>Feed</span>
               </RouterLink>
@@ -30,9 +30,11 @@
               <span>Drafts</span>
             </div>
             <div class="item">
-              <v-icon name="bi-graph-up-arrow" />
-              <span>Analytics</span>
-            </div>
+              <RouterLink class="navigate"   :to="{ name: 'postAnalytics' }" active-class="router">
+                <v-icon name="bi-graph-up-arrow" />
+                <span>Analytics</span>
+              </RouterLink>
+             </div>
           </div>
         </div>
 

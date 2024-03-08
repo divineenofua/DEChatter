@@ -819,6 +819,13 @@ input[type='submit']:hover {
 .items .blog-item {
   cursor: pointer;
 }
+.navigate{
+  text-decoration: none;
+  color: var(--black);
+}
+.router{
+   color: var(--purp);
+}
 
 /* feed page styling ends */
 
@@ -892,6 +899,11 @@ input[type='submit']:hover {
   color: var(--dirtyBlack);
   font-size: 19px;
   font-weight: 700;
+}
+.analy .container-analy{
+padding:   30px;
+border: 1px solid var(--gray);
+margin: 40px 0;
 }
 /* POST ANALYTICS STYLING ENDS */
 

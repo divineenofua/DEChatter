@@ -35,7 +35,8 @@
             <div class="blog-content" v-if="feedArr.length > 0" > 
           <div  class="items"     v-for="(item, index) of feedArr" :key="index">
        
-          <div class="blog-item"  @click="getItem(item)"> 
+          <div class="blog-item"   > 
+
             <div class="top-header2">
               <img class="prof-pic" src="/src/assets/christina-wocintechchat-com-c5pRBXFhJgo-unsplash.jpg" alt="" />
               <div class="top-items">
@@ -84,31 +85,26 @@
 <script setup>
 import SideNav from '../SideNav.vue'
 import SearchBar from '../SearchBar.vue'
-import { onBeforeMount } from 'vue';
+import { onBeforeMount  } from 'vue';
 import { ref } from 'vue'
 import { storeSpace } from '@/stores/piniaStores';
-import { useRouter } from 'vue-router'
+// import { useRouter } from 'vue-router'
+// import { or } from 'firebase/firestore';
 
-const router = useRouter();
+// const router = useRouter();
 
 const storeArticles = storeSpace();
  
-let feedArr = ref([]);
-let originalArrStore = ref([]);
-let loadingArticles = ref(false)
-  let datad = ref();
+const feedArr = ref([]);
+const originalArrStore = ref([]);
+const loadingArticles = ref(false)
+  const datad = ref();
  
-  const getItem = (item) => {
-  storeArticles.grabItem(item);
-  setTimeout(() => {
-      router.push({ name: 'postAnalytics'});
- },1000)    
- }
- 
-
+   
+   
  onBeforeMount(() => { 
-  loadingArticles.value = true;
-      fetch(' https://newsapi.org/v2/everything?q=keyword&apiKey=1a90e565119c4997b65a38772e7c37a4')
+   loadingArticles.value = true;
+      fetch(' https://newsapi.org/v2/everything?q=technology&apiKey=1a90e565119c4997b65a38772e7c37a4')
   .then((res) => {
     return res.json()
   })
@@ -119,7 +115,10 @@ let loadingArticles = ref(false)
       feedArr.value.push(items)
       originalArrStore.value.push(items);
     })
+
     storeArticles.searchData(feedArr.value);
+    storeArticles.searchArticles(originalArrStore.value);
+
   });
 
  

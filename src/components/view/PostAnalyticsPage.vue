@@ -5,29 +5,29 @@
 
       <div class="feed-container analy">
         <h2>Posts Analytics</h2>
+        <div class="container-analy"   v-for="(item, index) of blogItem" :key="index"  > 
         <div class="date">
-           <span>  {{ blogDate   }},  <small>25 Days Ago</small></span>
+           <span>  {{ item.publishedAt   }},  <small>25 Days Ago</small></span>
         </div>
-        <h3 class="analy-title">Post Highlights</h3>
+          <h3 class="analy-title">Post Highlights</h3>
         <div class="analy-info">
           <h2>Top posts    </h2><small> earned 20678 impressions</small>
         </div>
         <div class="blog-item"   > 
         <div class="top-header2">
-              <img class="prof-pic"  :src="blogItem.urlToImage" alt="" />
+              <img class="prof-pic"  :src="item.urlToImage" alt="" />
               <div class="top-items">
-                <h5>{{ blogItem.author }}</h5>
-                <span>{{ blogDate }}</span>
+                <h5>{{ item.author }}</h5>
+                <span>{{ item.publishedAt }}</span>
               </div>
             </div>
             <div class="btm"> 
-            <p class="title">{{ blogItem.title }}</p>
-            <!-- ttr time to read -->
-            <div class="ttr">
+            <p class="title">{{ item.title }}</p>
+             <div class="ttr">
             <v-icon name="bi-book" />
             <small>10mins read</small>
             </div>
-            <p class="descrip">{{ blogItem.description }}</p>
+            <p class="descrip">{{ item.description }}</p>
           
               <div class="interact-btn">
                 <div class="btn"><v-icon name="fa-regular-heart" />
@@ -72,8 +72,10 @@
               </div>
             </div>
           </div>
-      </div>
+        
+      </div> 
     </div>
+  </div>
     </template>  
 
 <script setup>
@@ -82,16 +84,16 @@
 import { ref } from 'vue'
 import SideNav from '../SideNav.vue'
 import SearchBar from '../SearchBar.vue'
-import { storeSpace } from '@/stores/piniaStores';
+import { storeSpace } from '../../stores/piniaStores';
  
-const blogItem = ref();
+const blogItem = ref([]);
 const storeItem= storeSpace();
  
-blogItem.value = storeItem.blogItem;
+blogItem.value = storeItem.articlesSave;
 
-  const blogDate = Date(blogItem.value.publishedAt.slice(0 ,-10)).slice(0 ,-45)
+  // const blogDate = Date(blogItem.value.publishedAt.slice(0 ,-10)).slice(0 ,-45)
  
  
- console.log('gedet', blogItem.value)
+ console.log('et', storeItem.articlesSave)
  
 </script>
