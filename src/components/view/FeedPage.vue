@@ -1,7 +1,8 @@
 <template>
   <div class="contain">
-    <SearchBar  @search="findArticles" class="search-bar" />
-    <SideNav  class="side-nav" />
+    <div class="grp"> 
+    <SearchBar @clear="originalArticles"   @search="findArticles" class="search-bar" />
+    <SideNav    class="side-nav" /></div>
 
     <div  class="feed-container">
       <div class="feed">
@@ -16,7 +17,7 @@
         </div>
         <div class="top-bar">
           <div class="top-items">
-            <div>
+            <div class="dif">
               For You
               <div class="bg"></div>
             </div>
@@ -67,10 +68,13 @@
           </div>
         </div>
     </div>
-        <div v-else>
+    <div class="loading" v-else-if="!loadingArticles && feedArr.length === 0">
+              No article found
+            </div>
+        <div v-else class="loading">
         Loading articles...
       </div>
-
+       
     </div>
       </div>
     </div>
@@ -90,8 +94,9 @@ const router = useRouter();
 const storeArticles = storeSpace();
  
 let feedArr = ref([]);
-
- let datad = ref();
+let originalArrStore = ref([]);
+let loadingArticles = ref(false)
+  let datad = ref();
  
   const getItem = (item) => {
   storeArticles.grabItem(item);
@@ -102,6 +107,7 @@ let feedArr = ref([]);
  
 
  onBeforeMount(() => { 
+  loadingArticles.value = true;
       fetch(' https://newsapi.org/v2/everything?q=keyword&apiKey=1a90e565119c4997b65a38772e7c37a4')
   .then((res) => {
     return res.json()
@@ -111,24 +117,29 @@ let feedArr = ref([]);
    datad.value= data;
       data.articles.map((items) => {
       feedArr.value.push(items)
+      originalArrStore.value.push(items);
     })
     storeArticles.searchData(feedArr.value);
   });
 
  
 })
+const originalArticles = () => {
+  feedArr.value= originalArrStore.value;
+  console.log('my mama rita')
+}
   const findArticles = () => {
+    loadingArticles.value = false;
     const searchTerm = storeArticles.dataSearch.toLowerCase();
     if(searchTerm === ''){
-     return  datad.value.articles.map((items) => {
-      feedArr.value.push(items)
-    })
+    //  return  datad.value.articles.map((items) => {
+    //   feedArr.value.push(items)
+    // })
+    feedArr.value= originalArrStore.value;
   }  
 
    const filteredArticles = feedArr.value.filter(item => {
     console.log(item.title.toLowerCase().indexOf(searchTerm) !== -1);
-
-   
     return item.title.toLowerCase().indexOf(searchTerm) !== -1 || item.description.toLowerCase().indexOf(searchTerm) !== -1
    });
 

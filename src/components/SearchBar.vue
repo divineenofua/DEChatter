@@ -3,7 +3,7 @@
     <div class="search-container">
         <div class="search-contents"> 
             <div></div>
-        <div class="search-input">
+         <div class="search-input">
             <v-icon name="fa-search" />
             <input v-model="search"  @keydown.enter="searchItem" type="search" placeholder="Search Chatter">
         </div>
@@ -26,6 +26,7 @@ const storeData = storeSpace();
 const searchItem = () => {
     storeData.searchData(search.value);
 }
+ 
 
 
 </script>
