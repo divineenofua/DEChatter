@@ -1,8 +1,10 @@
 <template>
-    <FeedPage  header="TECH"  apiUrl = 'https://newsapi.org/v2/everything?q=keyword&apiKey=1a90e565119c4997b65a38772e7c37a4' />
+    <FeedPage    apiUrl = 'https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=9619308009f2f65fcdacfb022ce58f60' />
     
      </template>
      <script setup>
     import FeedPage from './FeedPage.vue';
      
     </script>
+
+https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=
