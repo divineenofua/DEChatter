@@ -7,6 +7,7 @@
  const articlesSave = ref([]);
  const isActive = ref();
   const blogItem = ref();
+  
      const searchData = (data) => {
      
         dataSearch.value= data;

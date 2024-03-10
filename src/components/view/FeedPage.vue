@@ -8,7 +8,7 @@
       <div class="feed">
         <div class="top-header">
           <div class="left-item">
-            <h5>FEED</h5>
+            <h5>{{ header}} FEEDS </h5>
             <span>Explore different content You'd love</span>
           </div>
           <div class="btn">
@@ -33,9 +33,11 @@
         </div>
         <div class="feed-content">
             <div class="blog-content" v-if="feedArr.length > 0" > 
-          <div  class="items"     v-for="(item, index) of feedArr" :key="index">
+          
+
+               <div  class="items"     v-for="(item, index) of feedArr" :key="index">
        
-          <div class="blog-item"   > 
+          <div class="blog-item" @click="readBlog(item)"   > 
 
             <div class="top-header2">
               <img class="prof-pic" src="/src/assets/christina-wocintechchat-com-c5pRBXFhJgo-unsplash.jpg" alt="" />
@@ -54,7 +56,8 @@
             <p class="descrip">{{ item.description }}</p>
             <img class="blog-image" :src="item.urlToImage" />
               <div class="interact-btn">
-                <div class="btn"><v-icon name="fa-regular-heart" />
+                <div class="btn"><v-icon :class="{'iconActive':isActive}" @click='iconToggle' name= "fa-regular-heart" v-if="!isActive" />
+                <v-icon :class="{'iconActive':isActive}" @click='iconToggle' name= "bi-heart-fill" v-else />
                 <small>200</small>
                 </div>
                 <div class="btn"><v-icon name="co-comment-bubble" />
@@ -68,7 +71,7 @@
             </div>
           </div>
         </div>
-    </div>
+     </div>
     <div class="loading" v-else-if="!loadingArticles && feedArr.length === 0">
               No article found
             </div>
@@ -88,10 +91,20 @@ import SearchBar from '../SearchBar.vue'
 import { onBeforeMount  } from 'vue';
 import { ref } from 'vue'
 import { storeSpace } from '@/stores/piniaStores';
-// import { useRouter } from 'vue-router'
-// import { or } from 'firebase/firestore';
+import {defineProps }from 'vue';
+import { useRouter } from 'vue-router'
+// import { or } from 'firebase/firestore'
 
-// const router = useRouter();
+const router = useRouter();
+const isActive = ref(false);
+const iconToggle = () => {
+  isActive.value = !isActive.value;
+}
+
+const props = defineProps({
+  apiUrl: String ,
+  header: String 
+});
 
 const storeArticles = storeSpace();
  
@@ -99,12 +112,13 @@ const feedArr = ref([]);
 const originalArrStore = ref([]);
 const loadingArticles = ref(false)
   const datad = ref();
- 
-   
+  
+  
+  const apiUrlstore = props.apiUrl;
    
  onBeforeMount(() => { 
    loadingArticles.value = true;
-      fetch(' https://newsapi.org/v2/everything?q=technology&apiKey=1a90e565119c4997b65a38772e7c37a4')
+      fetch(apiUrlstore)
   .then((res) => {
     return res.json()
   })
@@ -148,7 +162,11 @@ const originalArticles = () => {
    
  };
 
-
+const readBlog = (article) => {
+  storeArticles.grabItem(article)
+  router.push({ name: 'BlogView'   });
+  console.log(article)
+}
   
  
 </script>

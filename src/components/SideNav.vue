@@ -12,29 +12,32 @@
           <h5>Overview</h5>
           <div class="sub-items icon">
             <div class="item">
-              <RouterLink class="navigate"  :to="{ name: 'FeedPage' }" active-class="router">
+              <RouterLink class="navigate" :to="{ name: 'MainFeed' }" active-class="router">
                 <v-icon name="bi-crop" />
                 <span>Feed</span>
               </RouterLink>
             </div>
             <div class="item">
+              <RouterLink class="navigate" :to="{ name: 'RecentView' }" active-class="router">
+              <v-icon name="co-av-timer" />
+              <span>Recent</span>
+            </RouterLink>
+            </div>
+            <div class="item">
               <v-icon name="bi-bookmark" />
               <span>Bookmark</span>
             </div>
-            <div class="item">
-              <v-icon name="bi-people" />
-              <span>team Blogs</span>
-            </div>
+            
             <div class="item">
               <v-icon name="bi-envelope" />
               <span>Drafts</span>
             </div>
             <div class="item">
-              <RouterLink class="navigate"   :to="{ name: 'postAnalytics' }" active-class="router">
+              <RouterLink class="navigate" :to="{ name: 'postAnalytics' }" active-class="router">
                 <v-icon name="bi-graph-up-arrow" />
                 <span>Analytics</span>
               </RouterLink>
-             </div>
+            </div>
           </div>
         </div>
 
@@ -42,23 +45,32 @@
           <h5>Trending Tags <v-icon name="fa-chart-bar" /></h5>
           <div class="sub-items">
             <div class="item">
-              <span>Programming</span>
+              <RouterLink class="navigate" :to="{ name: 'techPage' }" active-class="router">
+                <span>Technology</span>
+              </RouterLink>
             </div>
             <div class="item">
-              <span>Data science</span>
+              <RouterLink class="navigate" :to="{ name: 'DataScience' }" active-class="router">
+                <span>Data science</span>
+              </RouterLink>
+            </div>
+             
+            <div class="item">
+              <RouterLink class="navigate" :to="{ name: 'MachinePage' }" active-class="router">
+                <span>Machine learning </span>
+              </RouterLink>
             </div>
             <div class="item">
-              <span>Technology</span>
+              <RouterLink class="navigate" :to="{ name:'PoliticsView' }" active-class="router">
+                <span>Politics</span>
+              </RouterLink>
             </div>
             <div class="item">
-              <span>Machine learning </span>
+              <RouterLink class="navigate" :to="{ name:'ReligionView' }" active-class="router">
+                <span>Religion</span>
+              </RouterLink>
             </div>
-            <div class="item">
-              <span>Politics</span>
-            </div>
-            <div class="item">
-              <span class="item-text">See All</span>
-            </div>
+            
           </div>
         </div>
 
