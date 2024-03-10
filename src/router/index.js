@@ -45,7 +45,7 @@ const routes = [
         component: SideNav
     },
     {
-        path: '/MainFeed',
+        path: '/',
         name: 'MainFeed',
         component: MainFeed
     }, {
@@ -89,7 +89,7 @@ const routes = [
         component: BlogView,
     },
     {
-        path: '/',
+        path: '/PostView',
         name: 'PostView',
         component: PostView,
     }
