@@ -8,9 +8,9 @@
             <input v-model="search"  @keydown.enter="searchItem" type="search" placeholder="Search Chatter">
         </div>
         <div class="notify">
-            <v-icon name="bi-bell"/>
-            <div class="notify-img">            <img src="../assets/jassir-jonis-QWa0TIUW638-unsplash.jpg" alt="">
-</div>
+            <v-icon name="bi-bell" animation="ring"/>
+          <v-icon name="fa-user-circle" scale="2.5"/> 
+ 
          </div>
     </div>
 </div>

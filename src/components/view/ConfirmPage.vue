@@ -52,7 +52,7 @@ const confirm = () => {
   if (enteredCode === props.otpVal){
     toast.success('Code confirmed');
     setTimeout(() => {
-      router.push({ name: 'HomePage'});
+      router.push({ name: 'MainFeed'});
  },300)
   } else {
     toast.error('Incorrect code. Please try again.');

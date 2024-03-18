@@ -15,6 +15,8 @@ import ReligionView from '../components/view/ReligionView.vue';
 import RecentView from '../components/view/RecentView.vue';
 import MainFeed from '../components/view/MainFeed.vue';
 import PostView from '../components/view/PostView.vue';
+import PostFeed from '../components/view/PostFeed.vue';
+import BlogIView from '../components/view/BlogIView.vue';
 
 
 const routes = [
@@ -45,7 +47,7 @@ const routes = [
         component: SideNav
     },
     {
-        path: '/',
+        path: '/MainFeed',
         name: 'MainFeed',
         component: MainFeed
     }, {
@@ -89,10 +91,18 @@ const routes = [
         component: BlogView,
     },
     {
+        path: '/BlogIView',
+        name: 'BlogIView',
+        component: BlogIView,
+    },
+    {
         path: '/PostView',
         name: 'PostView',
         component: PostView,
-    }
+    }, {
+        path: '/',
+        name: 'PostFeed',
+        component: PostFeed}
 ]
 const router = createRouter({
     history:createWebHistory(),

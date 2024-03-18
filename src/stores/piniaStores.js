@@ -7,6 +7,7 @@
  const articlesSave = ref([]);
  const isActive = ref();
   const blogItem = ref();
+  const blogViewItem = ref();
   
      const searchData = (data) => {
      
@@ -18,7 +19,12 @@
     }
    const grabItem = (title) => { 
      blogItem.value = title;
+      
    }
+   const grabViewItem = (title) => { 
+      blogViewItem.value = title;
+       
+    }
    const sideBar = (prop) => {
 isActive.value = prop;
    }
@@ -33,6 +39,8 @@ isActive.value = prop;
     grabItem,
     isActive,
     sideBar,
-   articlesSave
+    grabViewItem,
+   articlesSave,
+   blogViewItem
    }
  })

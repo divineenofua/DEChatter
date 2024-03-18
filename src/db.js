@@ -1,7 +1,9 @@
  
-import { initializeApp } from "firebase/app";
+import { initializeApp} from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { getDatabase } from "firebase/database";
+
 
 
 const config = {
@@ -10,10 +12,13 @@ const config = {
     projectId: "chatapp-c200",
     storageBucket: "chatapp-c200.appspot.com",
     messagingSenderId: "315533809049",
-    appId: "1:315533809049:web:f3993990f14ff89f89af08"
+    appId: "1:315533809049:web:f3993990f14ff89f89af08",
 }
-
-const app =  initializeApp(config);
+// Initialize Firebase
+//  firebase.initializeApp(config);
+ const app =  initializeApp(config);
 const db = getFirestore(app);
 const auth = getAuth(app);
-export  {db, auth};
+const database = getDatabase(app)
+
+  export  {db, auth, database};

@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../db'
-import { reactive } from 'vue'
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { reactive ,ref} from 'vue'
+import { GoogleAuthProvider, signInWithPopup,  signOut } from 'firebase/auth'
 
 export const useAuthStore = defineStore('authStore', () => {
   const state = reactive({
@@ -11,7 +11,7 @@ export const useAuthStore = defineStore('authStore', () => {
     error3: '         ERROR'
   })
   const provider = new GoogleAuthProvider()
-  
+   const userName = ref('');
 
   const logInWithGoggle = async () => {
     await signInWithPopup(auth, provider)
@@ -36,7 +36,7 @@ export const useAuthStore = defineStore('authStore', () => {
       })
   }
   const logIn = async (user) => {
-    await signInWithEmailAndPassword(auth, user.email, user.password)
+    await signInWithEmailAndPassword(auth, user.email, user.password, user.displayName)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user
@@ -55,6 +55,7 @@ export const useAuthStore = defineStore('authStore', () => {
         // Signed up
         const user = userCredential.user
         console.log('user by', user)
+        userName.value= user.email;
       })
       .catch((error) => {
         // const errorCode = error.code;
@@ -64,10 +65,20 @@ export const useAuthStore = defineStore('authStore', () => {
       })
   }
 
+  const signOutUser = () => {
+    signOut(auth).then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
   return {
     registerUser,
     state,
     logInWithGoggle,
-    logIn
+    logIn,
+    signOutUser,
+    userName
   }
 })

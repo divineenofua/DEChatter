@@ -46,7 +46,7 @@ const onSubmit = () => {
     authStore.logIn(validUser).then(() => {
     toast.success('login successful.');
     setTimeout(() => {
-          router.push({ name: 'HomePage'  });
+          router.push({ name: 'MainFeed'  });
         },3000)
    })
    .catch(( ) => {

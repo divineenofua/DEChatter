@@ -6,7 +6,7 @@
     </div>
 
     <div class="sidebar-container" v-bind:class="{ active: isActive }">
-      <div class="logo">CHATTER</div>
+      <div class="logo logo-view">CHATTER</div>
       <div class="items-contents">
         <div class="items">
           <h5>Overview</h5>
@@ -29,8 +29,10 @@
             </div>
             
             <div class="item">
+              <RouterLink class="navigate" :to="{ name:'PostFeed' }" active-class="router">
               <v-icon name="bi-envelope" />
-              <span>Drafts</span>
+              <span>My Posts</span>
+            </RouterLink>
             </div>
             <div class="item">
               <RouterLink class="navigate" :to="{ name: 'postAnalytics' }" active-class="router">
@@ -85,6 +87,11 @@
               <v-icon name="bi-bell" />
               <span>Notifications</span>
             </div>
+            <div @click="logOutUser" class="item logout" style="color: red;">
+              
+               <span>Log Out</span>
+            
+            </div>
           </div>
         </div>
       </div>
@@ -94,8 +101,22 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useToast } from 'vue-toastification'
+import { useAuthStore } from '../stores/AuthStore'
+const authStore = useAuthStore();
+const toast = useToast()
 const isActive = ref(false)
+const router = useRouter();
 const showSideBar = () => {
   isActive.value = !isActive.value
+}
+const logOutUser = () => {
+
+authStore.signOutUser();
+toast.success('Sign Out successful')
+setTimeout(() => {
+      router.push({ name: 'HomePage'});
+ },300)
 }
 </script>

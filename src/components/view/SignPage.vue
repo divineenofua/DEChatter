@@ -125,7 +125,7 @@ const signInWithGoggle =() => {
   authStore.logInWithGoggle().then(() => {
   toast.success('Sign in with goggle successful')
   setTimeout(() => {
-      router.push({ name: 'HomePage'});
+      router.push({ name: 'MainFeed'});
  },300)
  }) .catch((error) => {
         console.error('Registration failed:', error);
