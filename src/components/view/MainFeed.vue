@@ -1,5 +1,5 @@
 <template>
-    <FeedPage    apiUrl = 'https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=9619308009f2f65fcdacfb022ce58f60'/>
+    <FeedPage    apiUrl = 'https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=a1c1daa069228775fe252f71f4b7e4f8'/>
     
      </template>
      <script setup>

@@ -1347,14 +1347,14 @@ font-size: 20px;
     font-size: 17px;
   }
   .confirm-container .content input {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
  
   }
   .confirm-container .content .input-item {
      
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
   }
   .confirm-container {
     gap: 20px;

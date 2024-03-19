@@ -121,7 +121,9 @@ const publish = async () => {
     }
 
     await saveBlogPost(imageData, videoData)
+
     resetFormData()
+    
   } catch (error) {
     console.error('Error publishing post:', error)
   }
@@ -176,14 +178,7 @@ const saveBlogPost = async (imageURL, videoURL) => {
     timestamp: serverTimestamp(),
     likes: 0,
     commentcount:0,
-    commentArr:['dummy'],
-    comments:{
-      comment:{
-        user: 'dee' , // Assuming you have user authentication and want to store the user's name with the comment
-      comment: 'shut up',
-      timestamp: serverTimestamp()
-      }
-    }
+    
   }
 
   const postListRef = firebaseRef(db, 'posts')

@@ -15,7 +15,7 @@
         </div>
         <div class="blog-item"   > 
         <div class="top-header2">
-              <img class="prof-pic"  :src="item.urlToImage" alt="" />
+              <img class="prof-pic"  :src="item.imageUrl" alt="" />
               <div class="top-items">
                 <h5>{{ item.author }}</h5>
                 <span>{{ item.publishedAt }}</span>

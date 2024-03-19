@@ -1,7 +1,7 @@
 <template>
   <div class="contain">
     <div class="grp">
-      <SearchBar @clear="originalArticles" @search="findArticles" class="search-bar" />
+      <SearchBar @clear="originalArticles" @keyup.enter="findArticles" class="search-bar" />
       <SideNav class="side-nav" />
     </div>
 
@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="feed-content">
-          <div class="blog-content" v-if="feedArr.length > 0">
+          <div class="blog-content">
             <div class="items" v-for="(item, index) of firebasePosts" :key="index">
               <div class="blog-item" @click="viewBlog(item)">
                 <div class="top-header2">
@@ -45,7 +45,7 @@
                     alt=""
                   />
                   <div class="top-items">
-                    <h5> {{ userNameId }}</h5>
+                    <h5>{{ userNameId }}</h5>
                     <span> {{ item.postTime }}</span>
                   </div>
                 </div>
@@ -68,12 +68,11 @@
                     name="fa-heart"
                     class="like"
                   />
-                  <small>{{ item.likes }}</small>
+                   <small>{{ item.likes }}</small>
                 </div>
                 <div class="btn" @click="showComment(item)">
                   <v-icon name="co-comment-bubble" />
-                  <small> {{ item.commentsCount 
-                  }}</small>
+                  <small>{{ item.commentcount }}</small>
                 </div>
                 <div class="btn">
                   <v-icon name="bi-file-bar-graph" />
@@ -81,21 +80,30 @@
                 </div>
               </div>
               <div class="comment" :class="{ Active: item.comment }">
-  <div class="display-comment" v-for="(comment, commentKey) in item.comments" :key="commentKey">
-    <v-icon name="fa-user-circle" />
-    <p>{{ comment.comment }}</p>
-    <small>{{ comment.user }}</small>
-    <small>{{ comment.timestamp }}</small>
-  </div>
-  <input
-    type="text"
-    v-model="comment"
-    @keyup.enter="addFireBaseComment(item)"
-    placeholder="Write a comment"
-  />
-</div>
+                <div
+                  class="display-comment"
+                  v-for="(comment, commentKey) in item.comments"
+                  :key="commentKey"
+                >
+                  <template v-if="comment.timestamp === item.timestamp">
+                    <v-icon name="fa-user-circle" />
+                    <p>{{ comment.comment }}</p>
+                    <small>{{ userNameId }}</small>
+                    <small>{{ comment.date }}</small>
+                  </template>
+                </div>
+                <div class="comment-item">
+                  <input
+                    type="text"
+                    v-model="comment"
+                    @keyup.enter="addFireBaseComment(item)"
+                    placeholder="write a comment"
+                  />
+                  <button class="com-btn" @click="addFireBaseComment(item)">Post</button>
+                </div>
+              </div>
             </div>
-            
+
             <div class="items" v-for="(item, index) of feedArr" :key="index">
               <div class="blog-item" @click="readBlog(item)">
                 <div class="top-header2">
@@ -141,9 +149,11 @@
               </div>
               <div class="comment" :class="{ Active: item.comment }">
                 <div class="display-comment" v-for="(c, index) in item.commentArr" :key="index">
-                 <div class="ite">  <v-icon name="fa-user-circle" /><span class="userName">{{ userNameId }}</span>
-                 </div><p>{{ c.comment }}</p>
-                 <span>{{c.timestamp }}</span>
+                  <div class="ite">
+                    <v-icon name="fa-user-circle" /><span class="userName">{{ userNameId }}</span>
+                  </div>
+                  <p>{{ c.comment }}</p>
+                  <span>{{ c.timestamp }}</span>
                 </div>
                 <div class="comment-item">
                   <input
@@ -157,7 +167,7 @@
               </div>
             </div>
           </div>
-          <div class="loading" v-else-if="!loadingArticles && feedArr.length === 0">
+          <div class="loading" v-if="!loadingArticles && feedArr.length === 0">
             No article found
           </div>
           <div v-else class="loading">
@@ -172,7 +182,7 @@
 <script setup>
 import SideNav from '../SideNav.vue'
 import SearchBar from '../SearchBar.vue'
-import { onBeforeMount } from 'vue'
+import { onBeforeMount} from 'vue'
 import { ref } from 'vue'
 import { storeSpace } from '@/stores/piniaStores'
 import { defineProps } from 'vue'
@@ -180,24 +190,20 @@ import { useAuthStore } from '../../stores/AuthStore'
 import { useRouter } from 'vue-router'
 // import { or } from 'firebase/firestore'
 
-import { getDatabase, ref as firebaseRef, child, get , serverTimestamp, push} from 'firebase/database'
+import { getDatabase, ref as firebaseRef, child, get } from 'firebase/database'
 
-const authStore = useAuthStore();
+const authStore = useAuthStore()
 
 const firebasePosts = ref([])
-const userNameId = ref('');
- 
-
- 
-const dbRef = firebaseRef(getDatabase())
+const userNameId = ref('')
+ const dbRef = firebaseRef(getDatabase())
 get(child(dbRef, 'posts'))
   .then((snapshot) => {
     if (snapshot.exists()) {
       // console.log(snapshot.val())
       //firebasePosts.value.push(snapshot.val())
       const postsData = snapshot.val()
-      firebasePosts.value = Object.values(postsData).reverse() 
-
+      firebasePosts.value = Object.values(postsData).reverse()
       console.log('hi', firebasePosts.value)
     } else {
       console.log('No data available')
@@ -206,12 +212,7 @@ get(child(dbRef, 'posts'))
   .catch((error) => {
     console.error(error)
   })
-
-  firebasePosts.value.map((items) => {
-        items.commentArr = []
-       
-      })
-
+ 
 const router = useRouter()
 const comment = ref('')
 //const commentArr = ref([]);
@@ -268,6 +269,7 @@ const originalArticles = () => {
 }
 const findArticles = () => {
   loadingArticles.value = false
+
   const searchTerm = storeArticles.dataSearch.toLowerCase()
   if (searchTerm === '') {
     //  return  datad.value.articles.map((items) => {
@@ -298,43 +300,43 @@ const showComment = (item) => {
 }
 
 const addComment = (item) => {
-  if(comment.value !== ''){
-  item.comments += 1
-  item.commentArr.push({ comment: comment.value, timestamp: new Date().toString().slice(0, -36) });
-  comment.value = ''
- }else{
-  console.log('empty field')
+  if (comment.value !== '') {
+    item.comments += 1
+    item.commentArr.push({ comment: comment.value, timestamp: new Date().toString().slice(0, -36) })
+    comment.value = ''
+  } else {
+    console.log('empty field')
+  }
 }
-}
-console.log('yes',comment.value)
+console.log('yes', comment.value)
 
-userNameId.value =authStore.userName.slice(0, -10);
- 
+userNameId.value = authStore.userName.slice(0, -10)
+
 const viewBlog = (item) => {
   storeArticles.grabViewItem(item)
   router.push({ name: 'BlogIView' })
   console.log(item)
 }
 
-const db = getDatabase()
+// const db = getDatabase()
 
 const addFireBaseComment = async (item) => {
-  console.log(item)
   try {
-    const postRef = firebaseRef(db, `posts/${item.timestamp}/comments`); 
-     
     const commentData = {
-      user: userNameId.value, // Assuming you have user authentication and want to store the user's name with the comment
+      user: userNameId.value,
       comment: comment.value,
-      timestamp: serverTimestamp()
-    };
-    
-    await push(child(postRef, 'comments'), commentData);
-    
-    comment.value = '';
-  } catch (error) {
-    console.error('Error adding comment:', error);
-  }
-};
+      timestamp: item.timestamp,
+      date: new Date().toString().slice(0, -36)
+    }
 
+    if (Array.isArray(item.comments)) {
+      item.comments.push(commentData)
+    } else {
+      item.comments = [commentData]
+    }
+    comment.value = ''
+  } catch (error) {
+    console.error('Error adding comment:', error)
+  }
+}
 </script>
