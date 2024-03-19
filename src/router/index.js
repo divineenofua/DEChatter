@@ -37,7 +37,7 @@ const routes = [
         props:true
     } ,
     {
-        path: '/HomePage',
+        path: '/',
         name: 'HomePage',
         component: HomePage
     },
@@ -47,7 +47,7 @@ const routes = [
         component: SideNav
     },
     {
-        path: '/',
+        path: '/MainFeed',
         name: 'MainFeed',
         component: MainFeed
     }, {
