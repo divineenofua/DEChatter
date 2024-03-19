@@ -5,7 +5,7 @@
             <div></div>
          <div class="search-input">
             <v-icon name="fa-search" />
-            <input v-model="search"  @keydown.enter="searchItem" type="search" placeholder="Search Chatter">
+            <input class="searchfield" v-model="search"  @keydown.enter="searchItem" type="search" placeholder="Search Chatter">
         </div>
         <div class="notify">
             <v-icon name="bi-bell" animation="ring"/>

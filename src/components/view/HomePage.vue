@@ -52,7 +52,7 @@
       <div class="header-items">
         <h1>Welcome to Chatter: A Haven for Text-Based Content</h1>
         <p>Unleash the Power of Words, Connect with Like-minded Readers and Writers</p>
-        <button class="btn-item">Get started</button>
+        <RouterLink class="side-btn" :to="{name:'SignPage'}"> <button class="btn-item">Get started</button></RouterLink>
       </div>
     </div>
     <!-- About section -->

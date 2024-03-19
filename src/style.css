@@ -231,6 +231,9 @@ input[type='submit']:hover {
   border: 1px solid var(--gray);
   border-radius: 4px;
 }
+.searchfield{
+  background-color: #fff;
+}
 .confirm-container .content input {
   width: 70px;
   height: 70px;

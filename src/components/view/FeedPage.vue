@@ -86,10 +86,11 @@
                   :key="commentKey"
                 >
                   <template v-if="comment.timestamp === item.timestamp">
-                    <v-icon name="fa-user-circle" />
+                    <div class="ite">
+                    <v-icon name="fa-user-circle" /><span class="userName">@{{ userNameId }}</span>
+                  </div>
                     <p>{{ comment.comment }}</p>
-                    <small>{{ userNameId }}</small>
-                    <small>{{ comment.date }}</small>
+                        <small>{{ comment.date }}</small>
                   </template>
                 </div>
                 <div class="comment-item">
@@ -150,7 +151,7 @@
               <div class="comment" :class="{ Active: item.comment }">
                 <div class="display-comment" v-for="(c, index) in item.commentArr" :key="index">
                   <div class="ite">
-                    <v-icon name="fa-user-circle" /><span class="userName">{{ userNameId }}</span>
+                    <v-icon name="fa-user-circle" /><span class="userName">@{{ userNameId }}</span>
                   </div>
                   <p>{{ c.comment }}</p>
                   <span>{{ c.timestamp }}</span>
