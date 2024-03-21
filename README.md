@@ -26,3 +26,6 @@ Welcome to the ChatterApp! Here, tech enthusiasts can explore, publish, and enga
 - **Firebase**: Used for backend services such as authentication, database, and storage.
 - **VUE Router**: For handling navigation within the app.
  - **Vitest**: For unit and E2E testing within the app.
+
+## Author 
+ ENOFUA ETUE DIVINE
