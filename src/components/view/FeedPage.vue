@@ -45,7 +45,7 @@
                     alt=""
                   />
                   <div class="top-items">
-                    <h5>{{ userNameId }}</h5>
+                    <h5>{{item.userName }}</h5>
                     <span> {{ item.postTime }}</span>
                   </div>
                 </div>
@@ -76,7 +76,7 @@
                 </div>
                 <div class="btn">
                   <v-icon name="bi-file-bar-graph" />
-                  <small>50</small>
+                  <small>2</small>
                 </div>
               </div>
               <div class="comment" :class="{ Active: item.comment }">
@@ -191,7 +191,7 @@ import { useAuthStore } from '../../stores/AuthStore'
 import { useRouter } from 'vue-router'
 // import { or } from 'firebase/firestore'
 
-import { getDatabase, ref as firebaseRef, child, get } from 'firebase/database'
+import { getDatabase, ref as firebaseRef, child, get} from 'firebase/database'
 
 const authStore = useAuthStore()
 
@@ -319,10 +319,13 @@ const viewBlog = (item) => {
   console.log(item)
 }
 
-// const db = getDatabase()
+ const itemArr = ref([]);
 
 const addFireBaseComment = async (item) => {
-  try {
+  item.commentcount += 1
+  itemArr.value.push({ comment: comment.value, timestamp: item.timestamp })
+  
+   try {
     const commentData = {
       user: userNameId.value,
       comment: comment.value,
@@ -339,5 +342,10 @@ const addFireBaseComment = async (item) => {
   } catch (error) {
     console.error('Error adding comment:', error)
   }
+  console.log(itemArr.value)
 }
+
+
+
+ 
 </script>

@@ -66,9 +66,14 @@ import { ref, computed } from 'vue'
 import { getDatabase, ref as firebaseRef, set, serverTimestamp, push } from 'firebase/database'
 import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { v4 as uuidv4 } from 'uuid'
+import { useAuthStore } from '../../stores/AuthStore'
 // import { useRouter } from 'vue-router'
 // const router = useRouter();
 const toast = useToast()
+const userNameId = ref('')
+const authStore = useAuthStore()
+
+userNameId.value = authStore.userName.slice(0, -10)
  
 const postDate = new Date().toISOString().slice(0, 10);
 
@@ -178,6 +183,7 @@ const saveBlogPost = async (imageURL, videoURL) => {
     timestamp: serverTimestamp(),
     likes: 0,
     commentcount:0,
+    userName: userNameId.value
     
   }
 
