@@ -27,5 +27,19 @@ Welcome to the ChatterApp! Here, tech enthusiasts can explore, publish, and enga
 - **VUE Router**: For handling navigation within the app.
  - **Vitest**: For unit and E2E testing within the app.
 
+   ## What I learnt
+
+- How to fetch data from an external source using `fetch()`
+- using Vue Routers 
+-  using firebase for aunthentication and saving of posts
+- Depolying Vue Routed sites to Vercel
+- Implementing pagination using the GitHub API
+- if you're asked to use typescript for a project ,  dont wait till you're done with the project before trying to integrate typescript because you'll encounter so many errors(learnt this the hard way)
+- Writing a descriptive README
+- Learnt How to Read Error messages and log
+- Fixed Bugs In codes
+- Learnt how to use props in Vue
+
+
 ## Author 
  ENOFUA ETUE DIVINE
