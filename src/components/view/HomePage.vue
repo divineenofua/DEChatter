@@ -84,21 +84,21 @@
 </p>
 <div class="know-contents">
     <div class="know-items">
-    <div class="logo"><v-icon name="co-chart-line" class="log"   scale="1.7" /></div>
+    <div class="logo"><v-icon name="co-chart-line" class="log"   scale="1.4" /></div>
     <span>Analytics</span>
     <p>Analytics to track the number of views, likes and comment and also analyze the performance of your articles over a period of time
 </p>
 </div>
 
 <div class="know-items">
-    <div class="logo"><v-icon name="bi-people-fill" scale="1.7"  /></div>
+    <div class="logo"><v-icon name="bi-people-fill"  class="log" scale="1.4"  /></div>
     <span>Social interactions</span>
     <p>Users on the platform can interact with posts they like, comment and engage in discussions
 </p>
 </div>
 
 <div class="know-items">
-    <div class="logo"> <v-icon name="co-newspaper" scale="1.7" /></div>
+    <div class="logo"> <v-icon name="co-newspaper" class="log" scale="1.4" /></div>
     <span>Content creation</span>
     <p>Write nice and appealing with our in-built markdown, a rich text editor</p>
 </div>

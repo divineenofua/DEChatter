@@ -17,7 +17,7 @@ html {
   max-width: 100vw;
 }
 :root {
-  --white: blue;
+  --white: white;
   --purp: #543ee0;
   --pink: #ea526f;
   --box-shadow:6px 6px 12px rgba(0, 0, 0, 0.2);
@@ -446,14 +446,22 @@ input[type='submit']:hover {
   font-size: 20px;
 }
 .know-contents .know-items .logo {
+ 
+  font-size:  20px;
+  display: block;
+   margin-bottom: 20px;
+  padding:0px  10px ;
+}
+
+.know-contents .know-items .logo .log{
   background-color: rgb(236, 236, 247);
-  border-radius: 50%;
+  vertical-align: middle;
+  text-align: center;
   height: 50px;
   width: 50px;
-  text-align: center;
-  padding: 10px 0;
-  overflow: hidden;
-  margin-bottom: 20px;
+  border-radius: 50%;
+  padding: 10px;
+  
 }
 /*join chatter styling*/
 .join-chatter {
