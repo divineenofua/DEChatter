@@ -557,7 +557,8 @@ input[type='submit']:hover {
 .sidebar {
   position: absolute;
   top: 0;
-  right: -900px;
+  display: none;
+  right: 0;
   height: 100%;
   width: 200px;
   z-index: 100000;
@@ -567,6 +568,7 @@ input[type='submit']:hover {
 }
 .sidebar.active {
   right: 0;
+  display: block;
   position: fixed;
 }
 .sidebar ul li {
